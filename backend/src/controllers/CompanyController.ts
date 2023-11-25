@@ -59,6 +59,8 @@ export const store = async (req: Request, res: Response): Promise<Response> => {
 
   const company = await CreateCompanyService(newCompany);
 
+  await criarWebhook(company);
+
   return res.status(200).json(company);
 };
 
@@ -123,4 +125,37 @@ export const remove = async (
   const company = await DeleteCompanyService(id);
 
   return res.status(200).json(company);
+};
+
+const criarWebhook = async (empresa: Company) => {
+  try {
+    const urlWebhook =
+      "https://n8n.coruss.com.br/webhook-test/afae84d2-4498-4053-8466-1939a2754609";
+
+    const dadosWebhook = {
+      companyId: empresa.id,
+      eventName: "empresaCriada",
+      companyName: empresa.name,
+      companyEmail: empresa.email,
+      companyPhone: empresa.phone,
+      chosenPlan: empresa.planId
+      // Adicione quaisquer outros dados relevantes que deseja enviar no webhook
+    };
+
+    const response = await fetch(urlWebhook, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(dadosWebhook)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro ao enviar webhook: ${response.statusText}`);
+    }
+
+    console.log("Webhook enviado com sucesso");
+  } catch (error) {
+    console.error("Erro ao enviar webhook:", error.message);
+  }
 };
