@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "coruss",
+    "password": "Ricardo2602",
+    "database": "coruss",
+    "host": "localhost",
+    "port": "5435",
+    "dialect": "postgresql"
+  },
+  "test": {
+    "username": "coruss",
+    "password": null,
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "dialect": "postgresql"
+  },
+  "production": {
+    "username": "coruss",
+    "password": null,
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "dialect": "postgresql"
+  }
+}
