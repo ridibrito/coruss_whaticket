@@ -1,9 +1,7 @@
 import React, {
   useState,
   useEffect,
-  useReducer,
   useContext,
-  useCallback,
 } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import api from "../../services/api";
@@ -12,7 +10,6 @@ import Board from "react-trello";
 import { toast } from "react-toastify";
 import { i18n } from "../../translate/i18n";
 import { useHistory } from "react-router-dom";
-import { socketConnection } from "../../services/socket";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,8 +32,8 @@ const Kanban = () => {
   const history = useHistory();
 
   const [tags, setTags] = useState([]);
-  const [reloadData, setReloadData] = useState(false);
-  const [isInitialLoadComplete, setIsInitialLoadComplete] = useState(false);
+  const [reloadData] = useState(false);
+  //const [isInitialLoadComplete, setIsInitialLoadComplete] = useState(false);
 
   const fetchTags = async () => {
     try {
@@ -54,6 +51,7 @@ const Kanban = () => {
 
   useEffect(() => {
     fetchTags();
+    // eslint-disable-next-line
   }, []);
 
   const [file, setFile] = useState({
@@ -62,7 +60,7 @@ const Kanban = () => {
 
   const [tickets, setTickets] = useState([]);
   const { user } = useContext(AuthContext);
-  const { profile, queues } = user;
+  //const { profile, queues } = user;
   const jsonString = user.queues.map((queue) => queue.UserQueue.queueId);
 
   const fetchTickets = async (jsonString) => {
@@ -200,6 +198,7 @@ const Kanban = () => {
 
   useEffect(() => {
     popularCards(jsonString);
+    // eslint-disable-next-line
   }, [tags, tickets, reloadData]);
 
   const handleCardMove = async (cardId, sourceLaneId, targetLaneId) => {

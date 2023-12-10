@@ -77,6 +77,7 @@ const NotificationsPopOver = () => {
 		}
 	  
 		fetchSettings();
+		// eslint-disable-next-line
 	}, []);
 
 	useEffect(() => {
@@ -101,6 +102,7 @@ const NotificationsPopOver = () => {
 		}
 
 		processNotifications();
+		// eslint-disable-next-line
 	}, [tickets]);
 
 	useEffect(() => {

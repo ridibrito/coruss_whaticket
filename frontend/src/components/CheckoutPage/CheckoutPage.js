@@ -25,7 +25,6 @@ import checkoutFormModel from "./FormModel/checkoutFormModel";
 import formInitialValues from "./FormModel/formInitialValues";
 
 import useStyles from "./styles";
-import Invoices from "../../pages/Financeiro";
 
 
 export default function CheckoutPage(props) {
@@ -37,7 +36,7 @@ export default function CheckoutPage(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(1);
   const [datePayment, setDatePayment] = useState(null);
-  const [invoiceId, setinvoiceId] = useState(props.Invoice.id);
+  const [invoiceId] = useState(props.Invoice.id);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
   const { user } = useContext(AuthContext);

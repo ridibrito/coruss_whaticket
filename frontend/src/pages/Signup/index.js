@@ -19,7 +19,6 @@ import {
 	MenuItem,
 	Select,
 } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import logo from "../../assets/logo.png";
@@ -28,18 +27,7 @@ import { i18n } from "../../translate/i18n";
 import { openApi } from "../../services/api";
 import toastError from "../../errors/toastError";
 import moment from "moment";
-const Copyright = () => {
-	return (
-		<Typography variant="body2" color="textSecondary" align="center">
-			{"Copyright © "}
-			<Link color="inherit" href="#">
-				PLW
-			</Link>{" "}
-		   {new Date().getFullYear()}
-			{"."}
-		</Typography>
-	);
-};
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -100,6 +88,7 @@ const UserSchema = Yup.object().shape({
 const SignUp = () => {
 	const classes = useStyles();
 	const history = useHistory();
+	// eslint-disable-next-line
 	let companyId = null
 
 	const params = qs.parse(window.location.search)
@@ -135,6 +124,7 @@ const SignUp = () => {
 			setPlans(list);
 		}
 		fetchData();
+		// eslint-disable-next-line
 	}, []);
 
 

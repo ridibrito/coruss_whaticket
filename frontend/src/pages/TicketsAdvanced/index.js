@@ -14,7 +14,6 @@ import TicketAdvancedLayout from "../../components/TicketAdvancedLayout";
 import logo from "../../assets/logo.png"; //PLW DESIGN LOGO//
 import { TicketsContext } from "../../context/Tickets/TicketsContext";
 
-import { i18n } from "../../translate/i18n";
 
 const useStyles = makeStyles(theme => ({
     header: {
@@ -61,12 +60,12 @@ const TicketAdvanced = (props) => {
 
 	const renderPlaceholder = () => {
 		return <Box className={classes.placeholderContainer}>
-             {/*<div className={classes.placeholderItem}>{i18n.t("chat.noTicketMessage")}</div>*/}
-			//PLW DESIGN LOGO//
+             
+			
 			<div>
 			<center><img style={{ margin: "0 auto", width: "70%" }} src={logo} alt="logologin" /></center>
 			</div>
-			//PLW DESIGN LOGO//
+			
 			<br />
             <Button onClick={() => setOption(1)} variant="contained" color="primary">
                 Selecionar Ticket

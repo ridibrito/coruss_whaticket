@@ -29,6 +29,7 @@ function CheckoutSuccess(props) {
         }, 4000);
       }
     });
+    // eslint-disable-next-line
   }, [history]);
 
   const handleCopyQR = () => {

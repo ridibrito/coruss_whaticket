@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     right: "108px",
   },
-
+// eslint-disable-next-line
   acceptButton: {
     position: "absolute",
     left: "50%",
@@ -175,6 +175,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+// eslint-disable-next-line
 {
   /*PLW DESIGN INSERIDO O dentro do const handleChangeTab*/
 }
@@ -213,7 +214,7 @@ const TicketListItemCustom = ({ ticket }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+// eslint-disable-next-line
   {
     /*CÓDIGO NOVO SAUDAÇÃO*/
   }
@@ -301,6 +302,7 @@ const TicketListItemCustom = ({ ticket }) => {
       toastError(err);
     }
   };
+  // eslint-disable-next-line
   {
     /*CÓDIGO NOVO SAUDAÇÃO*/
   }

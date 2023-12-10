@@ -190,7 +190,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
   const greaterThenSm = useMediaQuery(theme.breakpoints.up("sm"));
 
   const [volume, setVolume] = useState(localStorage.getItem("volume") || 1);
-
+// eslint-disable-next-line
   const { dateToClient } = useDate();
 
   
@@ -250,7 +250,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
     setUserModalOpen(true);
     handleCloseMenu();
   };
-
+// eslint-disable-next-line
   const handleClickLogout = () => {
     handleCloseMenu();
     handleLogout();
@@ -265,7 +265,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
   const handleRefreshPage = () => {
     window.location.reload(false);
   };
-
+// eslint-disable-next-line
   const handleMenuItemClick = () => {
     const { innerWidth: width } = window;
     if (width <= 600) {

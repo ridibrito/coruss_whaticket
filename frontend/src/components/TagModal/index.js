@@ -22,10 +22,7 @@ import api from "../../services/api";
 import toastError from "../../errors/toastError";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import { IconButton, InputAdornment } from "@material-ui/core";
-import { FormControlLabel, Switch } from '@material-ui/core';
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
+import { FormControlLabel } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles(theme => ({

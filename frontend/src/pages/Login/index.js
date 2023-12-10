@@ -7,7 +7,6 @@ import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
@@ -16,18 +15,6 @@ import { i18n } from "../../translate/i18n";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import logo from "../../assets/logo.png";
 
-const Copyright = () => {
-  return (
-    <Typography variant="body2" color="primary" align="center">
-      {"Copyright "}
-      <Link color="primary" href="#">
-        PLW
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-};
 
 const useStyles = makeStyles((theme) => ({
   root: {

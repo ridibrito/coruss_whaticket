@@ -112,6 +112,7 @@ const useAuth = () => {
 
       moment.locale('pt-br');
       const dueDate = data.user.company.dueDate;
+      // eslint-disable-next-line
       const hoje = moment(moment()).format("DD/MM/yyyy");
       const vencimento = moment(dueDate).format("DD/MM/yyyy");
 

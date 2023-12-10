@@ -8,7 +8,6 @@ import { Button, CircularProgress, Grid, TextField, Typography } from "@material
 import { Field, Form, Formik } from "formik";
 import toastError from "../../errors/toastError";
 import { toast } from "react-toastify";
-import api from "../../services/api";
 
 const useStyles = makeStyles((theme) => ({
   mainPaper: {

@@ -2,6 +2,7 @@ import openSocket from "socket.io-client";
 import { isObject } from "lodash";
 
 export function socketConnection(params) {
+  // eslint-disable-next-line
   let userId = null;
   if (localStorage.getItem("userId")) {
     userId = localStorage.getItem("userId");

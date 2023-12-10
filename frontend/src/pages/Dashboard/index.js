@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -9,29 +8,21 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import FormHelperText from "@material-ui/core/FormHelperText";
-
 import SpeedIcon from "@material-ui/icons/Speed";
 import GroupIcon from "@material-ui/icons/Group";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import PersonIcon from "@material-ui/icons/Person";
 import TodayIcon from '@material-ui/icons/Today';
-import BlockIcon from '@material-ui/icons/Block';
-import DoneIcon from '@material-ui/icons/Done';
-
 import { makeStyles } from "@material-ui/core/styles";
 import { grey, blue } from "@material-ui/core/colors";
 import { toast } from "react-toastify";
-
 import Chart from "./Chart";
 import ButtonWithSpinner from "../../components/ButtonWithSpinner";
-
 import CardCounter from "../../components/Dashboard/CardCounter";
 import TableAttendantsStatus from "../../components/Dashboard/TableAttendantsStatus";
 import { isArray } from "lodash";
-
 import useDashboard from "../../hooks/useDashboard";
 import useCompanies from "../../hooks/useCompanies";
-
 import { isEmpty } from "lodash";
 import moment from "moment";
 
@@ -163,6 +154,7 @@ const Dashboard = () => {
       await loadCompanies();
     }
     fetchData();
+    // eslint-disable-next-line
   }, [])
   //let companyDueDate = localStorage.getItem("companyDueDate");
   //const companyDueDate = localStorage.getItem("companyDueDate").toString();

@@ -562,7 +562,7 @@ const MessagesList = ({ ticket, ticketId, isGroup }) => {
     if (index < messagesList.length && index > 0) {
 
       let messageTicket = message.ticketId;
-      let connectionName = message.ticket?.whatsapp?.name;
+      //let connectionName = message.ticket?.whatsapp?.name;
       let previousMessageTicket = messagesList[index - 1].ticketId;
 
       if (messageTicket !== previousMessageTicket) {
@@ -648,8 +648,11 @@ const MessagesList = ({ ticket, ticketId, isGroup }) => {
           }
 
           {message.quotedMsg.mediaType === "image"
+          // eslint-disable-next-line
             && (
+              // eslint-disable-next-line
               <ModalImageCors imageUrl={message.quotedMsg.mediaUrl} />)
+              // eslint-disable-next-line
             || message.quotedMsg?.body}
 
         </div>
