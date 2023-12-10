@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: coruss
       POSTGRES_PASSWORD: Ricardo2602
     ports:
-      - 5435:5435
+      - 5432:5432
     restart: on-failure:3
 
   pgweb:
@@ -16,7 +16,7 @@ services:
     depends_on:
       - postgres
     environment:
-      PGWEB_DATABASE_URL: postgres://coruss:Ricardo2602@postgres:5435/coruss?sslmode=disable
+      PGWEB_DATABASE_URL: postgres://coruss:Ricardo2602@postgres:5432/coruss?sslmode=disable
     ports:
       - 8085:8081
     restart: on-failure:3
