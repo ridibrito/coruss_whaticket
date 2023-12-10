@@ -33,33 +33,40 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100vw",
     height: "100vh",
-    //background: "linear-gradient(to right, #76EE00 , #76EE00 , #458B00)",
     backgroundImage:
-      "url(https://siteconnect.com.br/wp-content/uploads/2023/03/cinema-scaled-1.jpg)",
+      "url(equipe.jpg)",
     backgroundRepeat: "no-repeat",
+    position:"fixed",
+    marginLeft: "300px",
     backgroundSize: "100% 100%",
     backgroundPosition: "center",
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
+    flexDirection: "row",
+   
   },
   paper: {
-    backgroundColor: theme.palette.login, //DARK MODE PLW DESIGN//
+    backgroundColor: theme.palette.login,
+    width:"30vw",
+    height:"100vh",
+    position:"fixed",
+    left:0,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent:"center",
     padding: "55px 30px",
     borderRadius: "12.5px",
+    maxWidth:"500px"
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
+    maxWidth:"350px"
   },
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+    maxWidth:"350px"
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -92,14 +99,12 @@ const Login = () => {
         <div className={classes.paper}>
           <div>
             <img
-              style={{ margin: "0 auto", width: "100%" }}
+              style={{ margin: "0 auto", width: "100%", maxWidth:"300px" }}
               src={logo}
-              alt="Whats"
+              alt="logo"
             />
           </div>
-          {/*<Typography component="h1" variant="h5">
-					{i18n.t("login.title")}
-				</Typography>*/}
+          
           <form className={classes.form} noValidate onSubmit={handlSubmit}>
             <TextField
               variant="outlined"

@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import clsx from "clsx";
-import moment from "moment";
 import {
   makeStyles,
   Drawer,
@@ -15,6 +14,7 @@ import {
   useTheme,
   useMediaQuery,
 } from "@material-ui/core";
+import { MoonStar, SunMoon  } from 'lucide-react';
 
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -27,7 +27,6 @@ import NotificationsVolume from "../components/NotificationsVolume";
 import UserModal from "../components/UserModal";
 import { AuthContext } from "../context/Auth/AuthContext";
 import BackdropLoading from "../components/BackdropLoading";
-import DarkMode from "../components/DarkMode";
 import { i18n } from "../translate/i18n";
 import toastError from "../errors/toastError";
 import AnnouncementsPopover from "../components/AnnouncementsPopover";
@@ -39,8 +38,6 @@ import ChatPopover from "../pages/Chat/ChatPopover";
 import { useDate } from "../hooks/useDate";
 
 import ColorModeContext from "../layout/themeContext";
-import Brightness4Icon from "@material-ui/icons/Brightness4";
-import Brightness7Icon from "@material-ui/icons/Brightness7";
 
 const drawerWidth = 240;
 
@@ -53,21 +50,21 @@ const useStyles = makeStyles((theme) => ({
     },
     backgroundColor: theme.palette.fancyBackground,
     "& .MuiButton-outlinedPrimary": {
-      color: theme.mode === "light" ? "#10aa62" : "#FFF",
+      color: theme.mode === "light" ? "##008BD9" : "#FFF",
       border:
         theme.mode === "light"
-          ? "1px solid rgba(0 124 102)"
+          ? "1px solid #008BD9"
           : "1px solid rgba(255, 255, 255, 0.5)",
     },
     "& .MuiTab-textColorPrimary.Mui-selected": {
-      color: theme.mode === "light" ? "#10aa62" : "#FFF",
+      color: theme.mode === "light" ? "##008BD9" : "#FFF",
     },
   },
   avatar: {
     width: "100%",
   },
   toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
+    paddingRight: 24, 
     color: theme.palette.dark.main,
     background: theme.palette.barraSuperior,
   },
@@ -166,11 +163,12 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: "80%",
     height: "auto",
-    maxWidth: 180,
+    maxWidth: 150,
+    margin: "auto",
     [theme.breakpoints.down("sm")]: {
       width: "auto",
       height: "80%",
-      maxWidth: 180,
+      maxWidth: 150,
     },
     logo: theme.logo,
   },
@@ -195,53 +193,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
 
   const { dateToClient } = useDate();
 
-  //################### CODIGOS DE TESTE #########################################
-  // useEffect(() => {
-  //   navigator.getBattery().then((battery) => {
-  //     console.log(`Battery Charging: ${battery.charging}`);
-  //     console.log(`Battery Level: ${battery.level * 100}%`);
-  //     console.log(`Charging Time: ${battery.chargingTime}`);
-  //     console.log(`Discharging Time: ${battery.dischargingTime}`);
-  //   })
-  // }, []);
-
-  // useEffect(() => {
-  //   const geoLocation = navigator.geolocation
-
-  //   geoLocation.getCurrentPosition((position) => {
-  //     let lat = position.coords.latitude;
-  //     let long = position.coords.longitude;
-
-  //     console.log('latitude: ', lat)
-  //     console.log('longitude: ', long)
-  //   })
-  // }, []);
-
-  // useEffect(() => {
-  //   const nucleos = window.navigator.hardwareConcurrency;
-
-  //   console.log('Nucleos: ', nucleos)
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log('userAgent', navigator.userAgent)
-  //   if (
-  //     navigator.userAgent.match(/Android/i)
-  //     || navigator.userAgent.match(/webOS/i)
-  //     || navigator.userAgent.match(/iPhone/i)
-  //     || navigator.userAgent.match(/iPad/i)
-  //     || navigator.userAgent.match(/iPod/i)
-  //     || navigator.userAgent.match(/BlackBerry/i)
-  //     || navigator.userAgent.match(/Windows Phone/i)
-  //   ) {
-  //     console.log('é mobile ', true) //celular
-  //   }
-  //   else {
-  //     console.log('não é mobile: ', false) //nao é celular
-  //   }
-  // }, []);
-  //##############################################################################
-
+  
   useEffect(() => {
     if (document.body.offsetWidth > 600) {
       setDrawerOpen(true);
@@ -401,9 +353,9 @@ const LoggedInLayout = ({ children, themeToggle }) => {
 
           <IconButton edge="start" onClick={toggleColorMode}>
             {theme.mode === "dark" ? (
-              <Brightness7Icon style={{ color: "white" }} />
+              <SunMoon  style={{ color: "white" }} />
             ) : (
-              <Brightness4Icon style={{ color: "white" }} />
+              <MoonStar style={{ color: "white" }} />
             )}
           </IconButton>
 

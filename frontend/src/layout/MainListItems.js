@@ -40,6 +40,7 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 import ToDoList from "../pages/ToDoList/";
 import toastError from "../errors/toastError";
 import { makeStyles } from "@material-ui/core/styles";
+import { PieChart, MessageCircle, KanbanSquare, MessagesSquare,Bookmark , HelpCircle, ListChecks,Users,CalendarPlus, Zap,TrendingUp, Settings2, Contact, ListTodo,BookOpen, MonitorCheck, Workflow, UserPlus,PlugZap,Landmark ,Settings  } from 'lucide-react';
 
 const useStyles = makeStyles((theme) => ({
   ListSubheader: {
@@ -260,51 +261,51 @@ const MainListItems = (props) => {
               <ListItemLink
                 to="/tickets"
                 primary={i18n.t("mainDrawer.listItems.tickets")}
-                icon={<WhatsAppIcon />}
+                icon={<MessageCircle  />}
               />
               <ListItemLink
                 to="/quick-messages"
                 primary={i18n.t("mainDrawer.listItems.quickMessages")}
-                icon={<FlashOnIcon />}
+                icon={<Zap />}
               />
               <ListItemLink
                 to="/CRM"
                 primary="CRM"
-                icon={<LoyaltyRoundedIcon />}
+                icon={<KanbanSquare  />}
               />
               <ListItemLink
                 to="/todolist"
                 primary={i18n.t("Tarefas")}
-                icon={<BorderColorIcon />}
+                icon={<ListChecks  />}
               />
               <ListItemLink
                 to="/contacts"
                 primary={i18n.t("mainDrawer.listItems.contacts")}
-                icon={<ContactPhoneOutlinedIcon />}
+                icon={<Users  />}
               />
               <ListItemLink
                 to="/schedules"
                 primary={i18n.t("mainDrawer.listItems.schedules")}
-                icon={<EventIcon />}
+                icon={<CalendarPlus  />}
               />
               <ListItemLink
                 to="/tags"
                 primary={i18n.t("mainDrawer.listItems.tags")}
-                icon={<LocalOfferIcon />}
+                icon={<Bookmark  />}
               />
               <ListItemLink
                 to="/chats"
                 primary={i18n.t("mainDrawer.listItems.chats")}
                 icon={
                   <Badge color="secondary" variant="dot" invisible={invisible}>
-                    <ForumIcon />
+                    <MessagesSquare  />
                   </Badge>
                 }
               />
               <ListItemLink
                 to="/helps"
                 primary={i18n.t("mainDrawer.listItems.helps")}
-                icon={<HelpOutlineIcon />}
+                icon={<HelpCircle />}
               />
             </>
           </>
@@ -334,7 +335,7 @@ const MainListItems = (props) => {
               small
               to="/"
               primary="Dashboard"
-              icon={<DashboardOutlinedIcon />}
+              icon={<PieChart />}
             />
           </>
         )}
@@ -366,7 +367,7 @@ const MainListItems = (props) => {
                   onClick={() => setOpenCampaignSubmenu((prev) => !prev)}
                 >
                   <ListItemIcon>
-                    <EventAvailableIcon />
+                    <TrendingUp   />
                   </ListItemIcon>
                   <ListItemText
                     primary={i18n.t("mainDrawer.listItems.campaigns")}
@@ -386,7 +387,7 @@ const MainListItems = (props) => {
                   <List component="div" disablePadding>
                     <ListItem onClick={() => history.push("/campaigns")} button>
                       <ListItemIcon>
-                        <ListIcon />
+                        <ListTodo />
                       </ListItemIcon>
                       <ListItemText primary="Listagem" />
                     </ListItem>
@@ -395,7 +396,7 @@ const MainListItems = (props) => {
                       button
                     >
                       <ListItemIcon>
-                        <PeopleIcon />
+                        <Contact />
                       </ListItemIcon>
                       <ListItemText primary="Listas de Contatos" />
                     </ListItem>
@@ -404,7 +405,7 @@ const MainListItems = (props) => {
                       button
                     >
                       <ListItemIcon>
-                        <SettingsOutlinedIcon />
+                        <Settings2 />
                       </ListItemIcon>
                       <ListItemText primary="Configurações" />
                     </ListItem>
@@ -416,7 +417,7 @@ const MainListItems = (props) => {
               <ListItemLink
                 to="/announcements"
                 primary={i18n.t("mainDrawer.listItems.annoucements")}
-                icon={<AnnouncementIcon />}
+                icon={<BookOpen />}
               />
             )}
             <ListItemLink
@@ -424,35 +425,35 @@ const MainListItems = (props) => {
               primary={i18n.t("mainDrawer.listItems.connections")}
               icon={
                 <Badge badgeContent={connectionWarning ? "!" : 0} color="error">
-                  <SyncAltIcon />
+                  <MonitorCheck />
                 </Badge>
               }
             />
             <ListItemLink
               to="/queues"
               primary={i18n.t("mainDrawer.listItems.queues")}
-              icon={<AccountTreeOutlinedIcon />}
+              icon={<Workflow />}
             />
             <ListItemLink
               to="/users"
               primary={i18n.t("mainDrawer.listItems.users")}
-              icon={<PeopleAltOutlinedIcon />}
+              icon={<UserPlus />}
             />
             <ListItemLink
               to="/messages-api"
               primary={i18n.t("mainDrawer.listItems.messagesAPI")}
-              icon={<CodeRoundedIcon />}
+              icon={<PlugZap />}
             />
             <ListItemLink
               to="/financeiro"
               primary={i18n.t("mainDrawer.listItems.financeiro")}
-              icon={<LocalAtmIcon />}
+              icon={<Landmark />}
             />
 
             <ListItemLink
               to="/settings"
               primary={i18n.t("mainDrawer.listItems.settings")}
-              icon={<SettingsOutlinedIcon />}
+              icon={<Settings />}
             />
             {}
           </>
