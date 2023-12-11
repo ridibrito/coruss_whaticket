@@ -7,6 +7,12 @@ import { CircularProgress, Button } from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
 	button: {
 		position: "relative",
+		textTransform: "capitalize",
+    fontWeight:"normal",
+    padding: "10px 20px",
+    borderRadius:"8px",
+    backgroundColor:"#0055DB",
+    fontFamily: "inter"
 	},
 
 	buttonProgress: {

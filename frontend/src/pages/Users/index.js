@@ -81,6 +81,17 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "scroll",
     ...theme.scrollbarStyles,
   },
+  button: {
+    textTransform: "capitalize",
+    fontWeight:"normal",
+    padding: "10px 20px",
+    borderRadius:"8px",
+    backgroundColor:"#0055DB",
+    fontFamily: "inter",
+    color:"white",
+    border:"none",
+    cursor:"pointer"
+  }
 }));
 
 const Users = () => {
@@ -220,13 +231,14 @@ const Users = () => {
               ),
             }}
           />
-          <Button
+          <button
+          className={classes.button}
             variant="contained"
             color="primary"
             onClick={handleOpenUserModal}
           >
             {i18n.t("users.buttons.add")}
-          </Button>
+          </button>
         </MainHeaderButtonsWrapper>
       </MainHeader>
       <Paper

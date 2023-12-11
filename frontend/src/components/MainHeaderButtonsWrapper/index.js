@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
 		marginLeft: "auto",
 		"& > *": {
 			margin: theme.spacing(1),
+		
 		},
 	},
 }));

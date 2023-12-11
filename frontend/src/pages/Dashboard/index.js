@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
   alignRight: {
     textAlign: "right",
+    
   },
   fullWidth: {
     width: "100%",

@@ -216,6 +216,7 @@ const CampaignsConfig = () => {
                 onClick={() => setShowVariablesForm(!showVariablesForm)}
                 color="primary"
                 style={{ marginRight: 10 }}
+                textTransform="capitalize"
               >
                 Adicionar Variável
               </Button>
@@ -223,6 +224,7 @@ const CampaignsConfig = () => {
                 onClick={saveSettings}
                 color="primary"
                 variant="contained"
+                textTransform="capitalize"
               >
                 Salvar Configurações
               </Button>

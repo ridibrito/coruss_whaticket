@@ -351,6 +351,7 @@ const MainListItems = (props) => {
                   </ListItemIcon>
                   <ListItemText
                     primary={i18n.t("mainDrawer.listItems.campaigns")}
+                    
                   />
                   {openCampaignSubmenu ? (
                     <ExpandLessIcon />
@@ -365,7 +366,8 @@ const MainListItems = (props) => {
                   unmountOnExit
                 >
                   <List component="div" disablePadding>
-                    <ListItem onClick={() => history.push("/campaigns")} button>
+                    <ListItem 
+                     onClick={() => history.push("/campaigns")} button>
                       <ListItemIcon>
                         <ListTodo />
                       </ListItemIcon>
