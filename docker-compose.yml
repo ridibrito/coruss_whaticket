@@ -16,7 +16,7 @@ services:
     depends_on:
       - postgres
     environment:
-      PGWEB_DATABASE_URL: postgres://coruss:Ricardo2602@postgres:5432/coruss?sslmode=disable
+      PGWEB_DATABASE_URL: postgresql://ricardo2602:AlMCyWmPNsYbMEfdnPia4w@db-coruss-1604.g8x.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full
     ports:
       - 8085:8081
     restart: on-failure:3
@@ -48,6 +48,7 @@ services:
 volumes:
   redis:
   redis-config:
+
 
 networks:
   redis-network:
