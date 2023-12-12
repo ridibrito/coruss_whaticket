@@ -24,31 +24,39 @@ const App = () => {
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-      },
+        setMode(prevMode => (prevMode === "light" ? "dark" : "light"));
+      }
     }),
     []
   );
 
   const theme = createTheme(
     {
+      typography: {
+        fontFamily: "inter",
+        textTransform: "none"
+      },
       scrollbarStyles: {
         "&::-webkit-scrollbar": {
           width: "8px",
           height: "8px",
+          textTransform: "none"
         },
         "&::-webkit-scrollbar-thumb": {
           boxShadow: "inset 0 0 6px rgba(0, 0, 0, 0.3)",
           backgroundColor: "#10aa62F",
-        },
+          textTransform: "none"
+        }
       },
       scrollbarStylesSoft: {
         "&::-webkit-scrollbar": {
           width: "8px",
+          textTransform: "none"
         },
         "&::-webkit-scrollbar-thumb": {
           backgroundColor: mode === "light" ? "#F3F3F3" : "#333333",
-        },
+          textTransform: "none"
+        }
       },
       palette: {
         type: mode,
@@ -61,6 +69,8 @@ const App = () => {
         optionsBackground: mode === "light" ? "#fafafa" : "#333",
         options: mode === "light" ? "#fafafa" : "#666",
         fontecor: mode === "light" ? "#0055DB" : "#fff",
+        fontFamily: "inter",
+        textTransform: "none",
         fancyBackground: mode === "light" ? "#fafafa" : "#333",
         bordabox: mode === "light" ? "#eee" : "#333",
         newmessagebox: mode === "light" ? "#eee" : "#333",
@@ -80,9 +90,9 @@ const App = () => {
             ? "linear-gradient(to right, #0072a7, #0089d7, #00afe7)"
             : "#666",
         boxticket: mode === "light" ? "#EEE" : "#333",
-        campaigntab: mode === "light" ? "#ededed" : "#333",
+        campaigntab: mode === "light" ? "#ededed" : "#333"
       },
-      mode,
+      mode
     },
     locale
   );

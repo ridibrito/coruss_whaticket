@@ -19,14 +19,36 @@ import { isArray } from "lodash";
 import api from "../services/api";
 import toastError from "../errors/toastError";
 import { makeStyles } from "@material-ui/core/styles";
-import { PieChart, MessageCircle, KanbanSquare, MessagesSquare,Bookmark , HelpCircle, ListChecks,Users,CalendarPlus, Zap,TrendingUp, Settings2, Contact, ListTodo,BookOpen, MonitorCheck, Workflow, UserPlus,PlugZap,Landmark ,Settings  } from 'lucide-react';
+import {
+  PieChart,
+  MessageCircle,
+  KanbanSquare,
+  MessagesSquare,
+  Bookmark,
+  HelpCircle,
+  ListChecks,
+  Users,
+  CalendarPlus,
+  Zap,
+  TrendingUp,
+  Settings2,
+  Contact,
+  ListTodo,
+  BookOpen,
+  MonitorCheck,
+  Workflow,
+  UserPlus,
+  PlugZap,
+  Landmark,
+  Settings
+} from "lucide-react";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   ListSubheader: {
     height: 26,
     marginTop: "-15px",
-    marginBottom: "-10px",
-  },
+    marginBottom: "-10px"
+  }
 }));
 
 function ListItemLink(props) {
@@ -56,8 +78,8 @@ const reducer = (state, action) => {
     const newChats = [];
 
     if (isArray(chats)) {
-      chats.forEach((chat) => {
-        const chatIndex = state.findIndex((u) => u.id === chat.id);
+      chats.forEach(chat => {
+        const chatIndex = state.findIndex(u => u.id === chat.id);
         if (chatIndex !== -1) {
           state[chatIndex] = chat;
         } else {
@@ -71,7 +93,7 @@ const reducer = (state, action) => {
 
   if (action.type === "UPDATE_CHATS") {
     const chat = action.payload;
-    const chatIndex = state.findIndex((u) => u.id === chat.id);
+    const chatIndex = state.findIndex(u => u.id === chat.id);
 
     if (chatIndex !== -1) {
       state[chatIndex] = chat;
@@ -84,7 +106,7 @@ const reducer = (state, action) => {
   if (action.type === "DELETE_CHAT") {
     const chatId = action.payload;
 
-    const chatIndex = state.findIndex((u) => u.id === chatId);
+    const chatIndex = state.findIndex(u => u.id === chatId);
     if (chatIndex !== -1) {
       state.splice(chatIndex, 1);
     }
@@ -96,7 +118,7 @@ const reducer = (state, action) => {
   }
 
   if (action.type === "CHANGE_CHAT") {
-    const changedChats = state.map((chat) => {
+    const changedChats = state.map(chat => {
       if (chat.id === action.payload.chat.id) {
         return action.payload.chat;
       }
@@ -106,7 +128,7 @@ const reducer = (state, action) => {
   }
 };
 
-const MainListItems = (props) => {
+const MainListItems = props => {
   // eslint-disable-next-line
   const classes = useStyles();
   const { drawerClose, collapsed } = props;
@@ -139,7 +161,7 @@ const MainListItems = (props) => {
     const companyId = localStorage.getItem("companyId");
     const socket = socketConnection({ companyId });
 
-    socket.on(`company-${companyId}-chat`, (data) => {
+    socket.on(`company-${companyId}-chat`, data => {
       if (data.action === "new-message") {
         dispatch({ type: "CHANGE_CHAT", payload: data });
       }
@@ -179,7 +201,7 @@ const MainListItems = (props) => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (whatsApps.length > 0) {
-        const offlineWhats = whatsApps.filter((whats) => {
+        const offlineWhats = whatsApps.filter(whats => {
           return (
             whats.status === "qrcode" ||
             whats.status === "PAIRING" ||
@@ -201,7 +223,7 @@ const MainListItems = (props) => {
   const fetchChats = async () => {
     try {
       const { data } = await api.get("/chats/", {
-        params: { searchParam, pageNumber },
+        params: { searchParam, pageNumber }
       });
       dispatch({ type: "LOAD_CHATS", payload: data.records });
     } catch (err) {
@@ -220,7 +242,7 @@ const MainListItems = (props) => {
         role={user.profile}
         perform={"drawer-service-items:view"}
         style={{
-          overflowY: "scroll",
+          overflowY: "scroll"
         }}
         no={() => (
           <>
@@ -230,7 +252,7 @@ const MainListItems = (props) => {
                 position: "relative",
                 fontSize: "17px",
                 textAlign: "left",
-                paddingLeft: 20,
+                paddingLeft: 20
               }}
               inset
               color="inherit"
@@ -241,44 +263,40 @@ const MainListItems = (props) => {
               <ListItemLink
                 to="/tickets"
                 primary={i18n.t("mainDrawer.listItems.tickets")}
-                icon={<MessageCircle  />}
+                icon={<MessageCircle />}
               />
               <ListItemLink
                 to="/quick-messages"
                 primary={i18n.t("mainDrawer.listItems.quickMessages")}
                 icon={<Zap />}
               />
-              <ListItemLink
-                to="/CRM"
-                primary="CRM"
-                icon={<KanbanSquare  />}
-              />
+              <ListItemLink to="/CRM" primary="CRM" icon={<KanbanSquare />} />
               <ListItemLink
                 to="/todolist"
                 primary={i18n.t("Tarefas")}
-                icon={<ListChecks  />}
+                icon={<ListChecks />}
               />
               <ListItemLink
                 to="/contacts"
                 primary={i18n.t("mainDrawer.listItems.contacts")}
-                icon={<Users  />}
+                icon={<Users />}
               />
               <ListItemLink
                 to="/schedules"
                 primary={i18n.t("mainDrawer.listItems.schedules")}
-                icon={<CalendarPlus  />}
+                icon={<CalendarPlus />}
               />
               <ListItemLink
                 to="/tags"
                 primary={i18n.t("mainDrawer.listItems.tags")}
-                icon={<Bookmark  />}
+                icon={<Bookmark />}
               />
               <ListItemLink
                 to="/chats"
                 primary={i18n.t("mainDrawer.listItems.chats")}
                 icon={
                   <Badge color="secondary" variant="dot" invisible={invisible}>
-                    <MessagesSquare  />
+                    <MessagesSquare />
                   </Badge>
                 }
               />
@@ -304,7 +322,7 @@ const MainListItems = (props) => {
                 position: "relative",
                 fontSize: "17px",
                 textAlign: "left",
-                paddingLeft: 20,
+                paddingLeft: 20
               }}
               inset
               color="inherit"
@@ -332,7 +350,7 @@ const MainListItems = (props) => {
                 position: "relative",
                 fontSize: "17px",
                 textAlign: "left",
-                paddingLeft: 20,
+                paddingLeft: 20
               }}
               inset
               color="inherit"
@@ -344,14 +362,13 @@ const MainListItems = (props) => {
               <>
                 <ListItem
                   button
-                  onClick={() => setOpenCampaignSubmenu((prev) => !prev)}
+                  onClick={() => setOpenCampaignSubmenu(prev => !prev)}
                 >
                   <ListItemIcon>
-                    <TrendingUp   />
+                    <TrendingUp />
                   </ListItemIcon>
                   <ListItemText
                     primary={i18n.t("mainDrawer.listItems.campaigns")}
-                    
                   />
                   {openCampaignSubmenu ? (
                     <ExpandLessIcon />
@@ -366,8 +383,7 @@ const MainListItems = (props) => {
                   unmountOnExit
                 >
                   <List component="div" disablePadding>
-                    <ListItem 
-                     onClick={() => history.push("/campaigns")} button>
+                    <ListItem onClick={() => history.push("/campaigns")} button>
                       <ListItemIcon>
                         <ListTodo />
                       </ListItemIcon>

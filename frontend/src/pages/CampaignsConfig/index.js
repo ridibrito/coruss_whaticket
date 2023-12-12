@@ -26,30 +26,33 @@ import {
   TableHead,
   TableRow,
   TextField,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import ConfirmationModal from "../../components/ConfirmationModal";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   mainPaper: {
     flex: 1,
     padding: theme.spacing(1),
     overflowY: "scroll",
-    ...theme.scrollbarStyles,
+    ...theme.scrollbarStyles
   },
   textRight: {
-    textAlign: "right",
+    textAlign: "right"
   },
   tabPanelsContainer: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(2)
   },
+  btn: {
+    textTransform: "none"
+  }
 }));
 
 const initialSettings = {
   messageInterval: 20,
   longerIntervalAfter: 20,
   greaterInterval: 60,
-  variables: [],
+  variables: []
 };
 
 const CampaignsConfig = () => {
@@ -65,7 +68,7 @@ const CampaignsConfig = () => {
     api.get("/campaign-settings").then(({ data }) => {
       const settingsList = [];
       if (Array.isArray(data) && data.length > 0) {
-        data.forEach((item) => {
+        data.forEach(item => {
           settingsList.push([item.key, JSON.parse(item.value)]);
         });
         setSettings(Object.fromEntries(settingsList));
@@ -73,24 +76,24 @@ const CampaignsConfig = () => {
     });
   }, []);
 
-  const handleOnChangeVariable = (e) => {
+  const handleOnChangeVariable = e => {
     if (e.target.value !== null) {
       const changedProp = {};
       changedProp[e.target.name] = e.target.value;
-      setVariable((prev) => ({ ...prev, ...changedProp }));
+      setVariable(prev => ({ ...prev, ...changedProp }));
     }
   };
 
-  const handleOnChangeSettings = (e) => {
+  const handleOnChangeSettings = e => {
     const changedProp = {};
     changedProp[e.target.name] = e.target.value;
-    setSettings((prev) => ({ ...prev, ...changedProp }));
+    setSettings(prev => ({ ...prev, ...changedProp }));
   };
 
   const addVariable = () => {
-    setSettings((prev) => {
+    setSettings(prev => {
       const variablesExists = settings.variables.filter(
-        (v) => v.key === variable.key
+        v => v.key === variable.key
       );
       const variables = prev.variables;
       if (variablesExists.length === 0) {
@@ -102,8 +105,8 @@ const CampaignsConfig = () => {
   };
 
   const removeVariable = () => {
-    const newList = settings.variables.filter((v) => v.key !== selectedKey);
-    setSettings((prev) => ({ ...prev, variables: newList }));
+    const newList = settings.variables.filter(v => v.key !== selectedKey);
+    setSettings(prev => ({ ...prev, variables: newList }));
     setSelectedKey(null);
   };
 
@@ -150,7 +153,7 @@ const CampaignsConfig = () => {
                   labelId="messageInterval-label"
                   label="Intervalo Randômico de Disparo"
                   value={settings.messageInterval}
-                  onChange={(e) => handleOnChangeSettings(e)}
+                  onChange={e => handleOnChangeSettings(e)}
                 >
                   <MenuItem value={0}>Sem Intervalo</MenuItem>
                   <MenuItem value={5}>5 segundos</MenuItem>
@@ -175,7 +178,7 @@ const CampaignsConfig = () => {
                   labelId="longerIntervalAfter-label"
                   label="Intervalo Maior Após"
                   value={settings.longerIntervalAfter}
-                  onChange={(e) => handleOnChangeSettings(e)}
+                  onChange={e => handleOnChangeSettings(e)}
                 >
                   <MenuItem value={0}>Não definido</MenuItem>
                   <MenuItem value={5}>5 mensagens</MenuItem>
@@ -200,7 +203,7 @@ const CampaignsConfig = () => {
                   labelId="greaterInterval-label"
                   label="Intervalo de Disparo Maior"
                   value={settings.greaterInterval}
-                  onChange={(e) => handleOnChangeSettings(e)}
+                  onChange={e => handleOnChangeSettings(e)}
                 >
                   <MenuItem value={0}>Sem Intervalo</MenuItem>
                   <MenuItem value={20}>20 segundos</MenuItem>
@@ -213,6 +216,7 @@ const CampaignsConfig = () => {
             </Grid>
             <Grid xs={12} className={classes.textRight} item>
               <Button
+                className={classes.btn}
                 onClick={() => setShowVariablesForm(!showVariablesForm)}
                 color="primary"
                 style={{ marginRight: 10 }}
@@ -221,6 +225,7 @@ const CampaignsConfig = () => {
                 Adicionar Variável
               </Button>
               <Button
+                className={classes.btn}
                 onClick={saveSettings}
                 color="primary"
                 variant="contained"
@@ -253,6 +258,7 @@ const CampaignsConfig = () => {
                 </Grid>
                 <Grid xs={12} className={classes.textRight} item>
                   <Button
+                    className={classes.btn}
                     onClick={() => setShowVariablesForm(!showVariablesForm)}
                     color="primary"
                     style={{ marginRight: 10 }}
@@ -260,6 +266,7 @@ const CampaignsConfig = () => {
                     Fechar
                   </Button>
                   <Button
+                    className={classes.btn}
                     onClick={addVariable}
                     color="primary"
                     variant="contained"
