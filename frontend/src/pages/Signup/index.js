@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import qs from "query-string";
-
+import axios from "axios";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
@@ -21,9 +21,8 @@ import { i18n } from "../../translate/i18n";
 import { openApi } from "../../services/api";
 import toastError from "../../errors/toastError";
 import moment from "moment";
-import { postFunction } from "../../services/api";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "100vw",
     height: "100vh",
@@ -34,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "100% 100%",
     backgroundPosition: "center",
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
   },
   paper: {
     backgroundColor: theme.palette.login,
@@ -49,20 +48,20 @@ const useStyles = makeStyles(theme => ({
     padding: "55px 30px",
     borderRadius: "12.5px",
     maxWidth: "500px",
-    fontFamily: "inter"
+    fontFamily: "inter",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
     maxWidth: "350px",
-    fontFamily: "inter"
+    fontFamily: "inter",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
     maxWidth: "350px",
     fontFamily: "inter",
-    textTransform: "none"
+    textTransform: "none",
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -71,12 +70,15 @@ const useStyles = makeStyles(theme => ({
     padding: "10px 20px",
     borderRadius: "8px",
     backgroundColor: "#0055DB",
-    fontFamily: "inter"
+    fontFamily: "inter",
   },
   powered: {
-    color: "white"
-  }
+    color: "white",
+  },
 }));
+
+const webhookURL =
+  "https://n8n.coruss.com.br/webhook-test/ee414d66-4f40-4bbe-a27f-eeba0d07161d";
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
@@ -85,7 +87,7 @@ const UserSchema = Yup.object().shape({
     .required("Obrigatório"),
   password: Yup.string().min(5, "Muito curto!").max(50, "Too Long!"),
   email: Yup.string().email("email inválido").required("Obrigatório"),
-  cnpj: Yup.string().min(14, "Muito curto!").required("Obrigatório")
+  cnpj: Yup.string().min(14, "Muito curto!").required("Obrigatório"),
 });
 
 const SignUp = () => {
@@ -105,12 +107,12 @@ const SignUp = () => {
     phone: "",
     cnpj: "",
     password: "",
-    planId: ""
+    planId: "",
   };
 
   const [user] = useState(initialState);
   const dueDate = moment().add(3, "day").format();
-  const handleSignUp = async values => {
+  const handleSignUp = async (values) => {
     Object.assign(values, { recurrence: "MENSAL" });
     Object.assign(values, { dueDate: dueDate });
     Object.assign(values, { status: "t" });
@@ -118,6 +120,15 @@ const SignUp = () => {
     try {
       await openApi.post("/companies/cadastro", values);
       toast.success(i18n.t("signup.toasts.success"));
+      await axios.post(webhookURL, {
+        newUser: {
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          planId: values.planId,
+          cnpj: values.cnpj,
+        },
+      });
       history.push("/login");
     } catch (err) {
       console.log(err);
@@ -136,18 +147,6 @@ const SignUp = () => {
     fetchData();
     // eslint-disable-next-line
   }, []);
-
-  function createCostumerAsaas() {
-    return postFunction()
-      .then(data => {
-        console.log(data);
-        return data;
-      })
-      .catch(err => {
-        console.error(err);
-        throw err;
-      });
-  }
 
   return (
     <div className={classes.root}>
@@ -271,7 +270,6 @@ const SignUp = () => {
                 </Grid>
                 <Button
                   type="submit"
-                  onClick={createCostumerAsaas}
                   fullWidth
                   variant="contained"
                   color="primary"
